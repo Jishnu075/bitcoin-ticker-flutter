@@ -1,3 +1,4 @@
+import 'urlHandle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'coin_data.dart';
@@ -9,7 +10,24 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  void getData() async {
+    var result = await urlHandle.result();
+    return result;
+    // print(result);
+  }
+
   String selectedCurrency = 'USD';
+  UrlHandle urlHandle = UrlHandle(selectedCurrency: 'USD');
+
+  // NetworkHelper networkHelper =
+  //     NetworkHelper(url: 'https://rest.coinapi.io/v1/exchangerate/BTC/USD');
+  // String onlineRate = networkHelper.getData().toString();
 
 // Func-AndroidDropDownButton
   DropdownButton androidDropDown() {
@@ -74,7 +92,7 @@ class _PriceScreenState extends State<PriceScreen> {
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  '1 BTC = ? USD',
+                  '1 BTC = ',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
@@ -94,6 +112,5 @@ class _PriceScreenState extends State<PriceScreen> {
         ],
       ),
     );
-    
   }
 }
