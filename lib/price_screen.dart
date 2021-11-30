@@ -18,8 +18,8 @@ class _PriceScreenState extends State<PriceScreen> {
 
   void getData() async {
     var result = await urlHandle.result();
-    return result;
     // print(result);
+    return result;
   }
 
   String selectedCurrency = 'USD';
