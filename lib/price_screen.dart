@@ -16,10 +16,12 @@ class _PriceScreenState extends State<PriceScreen> {
     getData();
   }
 
-  void getData() async {
-    var result = await urlHandle.result();
+  Future<String> getData() async {
+    var resultOne = await urlHandle.result();
+
     // print(result);
-    return result;
+    var resultTwo = resultOne.toString();
+    return resultTwo;
   }
 
   String selectedCurrency = 'USD';
