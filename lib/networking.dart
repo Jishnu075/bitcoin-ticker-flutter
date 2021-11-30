@@ -13,11 +13,14 @@ class NetworkHelper {
       Uri.parse(url),
       headers: {'X-CoinAPI-Key': apiKey},
     );
-
-    var data = response.body;
-    var rate = jsonDecode(data)['rate'];
-    print('rate working,networking.dart');
-    // print(rate);
-    return rate;
+    if (response.statusCode == 200) {
+      var data = response.body;
+      var rate = jsonDecode(data)['rate'];
+      print('rate working,networking.dart');
+      // print(rate);
+      return rate;
+    } else {
+      print(response.statusCode);
+    }
   }
 }
